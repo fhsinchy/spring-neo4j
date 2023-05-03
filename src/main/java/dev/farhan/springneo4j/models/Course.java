@@ -5,9 +5,8 @@ import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.HashSet;
+import java.util.Set;
 
 @Node
 public class Course {
@@ -15,14 +14,13 @@ public class Course {
     private Long id;
     private String identifier;
     private String title;
-    @Relationship(type = "TEACHES", direction = Relationship.Direction.INCOMING)
+    @Relationship(type = "TAUGHT_BY")
     private User taughtBy;
-    @Relationship(type = "PART_OF", direction = Relationship.Direction.INCOMING)
-    private List<Lesson> lessons;
+    @Relationship(type = "BELONGS_TO", direction = Relationship.Direction.INCOMING)
+    private Set<Lesson> lessons = new HashSet<>();
 
     public Course() {
     }
-
 
     public String getTitle() {
         return title;
@@ -36,14 +34,18 @@ public class Course {
         return taughtBy.getName();
     }
 
-    public List<HashMap<String, String >> getLessons() {
-        return lessons.stream().map(lesson -> {
-            HashMap<String, String> l = new HashMap<>();
-
-            l.put("title", lesson.getTitle());
-            l.put("identifier", lesson.getIdentifier());
-
-            return l;
-        }).collect(Collectors.toList());
+    public Set<Lesson> getLessons() {
+        return lessons;
     }
+
+    // public List<HashMap<String, String >> getLessons() {
+    //     return lessons.stream().map(lesson -> {
+    //         HashMap<String, String> l = new HashMap<>();
+
+    //         l.put("title", lesson.getTitle());
+    //         l.put("identifier", lesson.getIdentifier());
+
+    //         return l;
+    //     }).collect(Collectors.toList());
+    // }
 }

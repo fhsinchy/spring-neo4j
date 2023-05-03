@@ -5,15 +5,13 @@ import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
-import java.util.HashMap;
-
 @Node
 public class Lesson {
     @Id @GeneratedValue
     private Long id;
     private String identifier;
     private String title;
-    @Relationship(type = "PART_OF")
+    @Relationship(type = "BELONGS_TO")
     private Course course;
 
     public Lesson() {
@@ -27,12 +25,7 @@ public class Lesson {
         return title;
     }
 
-    public HashMap<String, String> getCourse() {
-        HashMap<String, String> c = new HashMap<>();
-
-        c.put("title", course.getTitle());
-        c.put("identifier", course.getIdentifier());
-
-        return c;
+    public Course getCourse() {
+        return course;
     }
 }
