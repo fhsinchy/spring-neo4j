@@ -1,6 +1,5 @@
 package dev.farhan.springneo4j.models;
 
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
@@ -29,7 +28,6 @@ public class Teacher {
             HashMap<String, String> c = new HashMap<>();
 
             c.put("title", course.getTitle());
-            c.put("link", course.getLink());
 
             return c;
         }).collect(Collectors.toList());

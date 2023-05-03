@@ -33,7 +33,6 @@ public class Student {
 
             c.put("title", course.getTitle());
             c.put("taughtBy", course.getTaughtBy());
-            c.put("link", course.getLink());
 
             return c;
         }).collect(Collectors.toList());
