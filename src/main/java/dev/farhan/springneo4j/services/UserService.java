@@ -49,7 +49,7 @@ public class UserService {
 
     public void enrollIn(String courseIdentifier, String username) {
         User user = userRepository.findUserByUsername(username).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
-        Course course = courseRepository.findCourseByIdentifier(courseIdentifier).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));\
+        Course course = courseRepository.findCourseByIdentifier(courseIdentifier).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
 
         user.setEnrollments(course);
 
