@@ -47,7 +47,7 @@ public class UserService {
         return userRepository.findEnrollmentsByUsername(username);
     }
 
-    public void enrollIn(String courseIdentifier, String username) {
+    public Course enrollIn(String courseIdentifier, String username) {
         User user = userRepository.findUserByUsername(username).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
         Course course = courseRepository.findCourseByIdentifier(courseIdentifier).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
 
@@ -55,5 +55,6 @@ public class UserService {
 
         userRepository.save(user);
 
+        return course;
     }
 }
