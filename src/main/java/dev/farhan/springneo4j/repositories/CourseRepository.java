@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface CourseRepository extends Neo4jRepository<Course, String> {
+public interface CourseRepository extends Neo4jRepository<Course, Long> {
     Optional<Course> findCourseByIdentifier(String identifier);
 }

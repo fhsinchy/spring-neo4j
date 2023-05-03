@@ -11,11 +11,12 @@ import java.util.stream.Collectors;
 
 @Node
 public class Course {
-    @Id
+    @Id @GeneratedValue
+    private Long id;
     private String identifier;
     private String title;
     @Relationship(type = "TEACHES", direction = Relationship.Direction.INCOMING)
-    private Teacher taughtBy;
+    private User taughtBy;
     @Relationship(type = "PART_OF", direction = Relationship.Direction.INCOMING)
     private List<Lesson> lessons;
 

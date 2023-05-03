@@ -9,8 +9,7 @@ import java.util.List;
 
 @Node
 public class User {
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     private Long id;
     private String name;
     private String username;
@@ -50,5 +49,30 @@ public class User {
 
     public String getRoles() {
         return roles;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", roles='" + roles + '\'' +
+                '}';
     }
 }

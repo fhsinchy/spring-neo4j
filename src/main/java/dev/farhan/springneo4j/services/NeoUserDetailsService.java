@@ -1,7 +1,6 @@
 package dev.farhan.springneo4j.services;
 
 import dev.farhan.springneo4j.models.SecurityUser;
-import dev.farhan.springneo4j.repositories.StudentRepository;
 import dev.farhan.springneo4j.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
