@@ -1,31 +1,38 @@
 package dev.farhan.springneo4j.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 public class SecurityUser implements UserDetails {
 
-    private Student student;
+    private User user;
 
-    public SecurityUser(Student student) {
-        this.student = student;
+    public SecurityUser(User user) {
+        this.user = user;
     }
 
     @Override
     public String getUsername() {
-        return student.getUsername();
+        return user.getUsername();
     }
 
     @Override
     public String getPassword() {
-        return student.getPassword();
+        return user.getPassword();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return Arrays.stream(user
+                        .getRoles()
+                        .split(","))
+                .map(SimpleGrantedAuthority::new)
+                .toList();
     }
 
     @Override
