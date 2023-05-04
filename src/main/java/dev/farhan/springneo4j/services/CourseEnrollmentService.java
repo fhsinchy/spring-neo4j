@@ -23,6 +23,6 @@ public class CourseEnrollmentService {
         User user = userRepository.findUserByUsername(username).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
         Course course = courseRepository.findCourseByIdentifier(courseIdentifier).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
 
-        return user.getEnrollments().contains(course);
+        return user.getEnrollments().stream().anyMatch(c -> courseIdentifier.equals(c.getIdentifier()));
     }
 }

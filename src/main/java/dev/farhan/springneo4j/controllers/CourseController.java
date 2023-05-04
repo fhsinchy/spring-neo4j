@@ -23,11 +23,20 @@ public class CourseController {
     private CourseEnrollmentService courseEnrollmentService;
 
     @GetMapping("/")
-    public ResponseEntity<List<CourseDTO>> courseIndex() {
+    public ResponseEntity<List<CourseDTO>> courseIndex(Principal principal) {
 
         List<Course> courses = courseService.getAllCourses();
 
-        List<CourseDTO> responseCourses = courses.stream().map((course) -> new CourseDTO(course.getIdentifier(), course.getTitle(), course.getTaughtBy(), course.getLessons())).collect(Collectors.toList());
+        List<CourseDTO> responseCourses = courses.stream().map(
+                (course) -> {
+                    CourseDTO responseCourse = new CourseDTO(course.getIdentifier(), course.getTitle(), course.getTaughtBy(), course.getLessons());
+
+                    if (principal != null)
+                        responseCourse.setEnrolled(courseEnrollmentService.getEnrollmentStatus(principal.getName(), course.getIdentifier()));
+
+                    return responseCourse;
+                }
+        ).collect(Collectors.toList());
 
         return new ResponseEntity<>(responseCourses, HttpStatus.OK);
 
