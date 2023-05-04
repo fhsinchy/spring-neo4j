@@ -5,6 +5,7 @@ import java.util.Set;
 import java.util.HashSet;
 
 public class CourseDTO {
+    private String identifier;
     private String title;
     private String taughtBy;
     private Set<Lesson> lessons = new HashSet<>();
@@ -13,15 +14,20 @@ public class CourseDTO {
     public CourseDTO() {
     }
 
-    
-
-    public CourseDTO(String title, String taughtBy, Set<Lesson> lessons) {
+    public CourseDTO(String identifier, String title, String taughtBy, Set<Lesson> lessons) {
+        this.identifier = identifier;
         this.title = title;
         this.taughtBy = taughtBy;
         this.lessons = lessons;
     }
 
+    public String getIdentifier() {
+        return identifier;
+    }
 
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
+    }
 
     public String getTitle() {
         return title;

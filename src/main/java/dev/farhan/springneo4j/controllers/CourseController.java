@@ -27,7 +27,7 @@ public class CourseController {
 
         List<Course> courses = courseService.getAllCourses();
 
-        List<CourseDTO> responseCourses = courses.stream().map((course) -> new CourseDTO(course.getTitle(), course.getTaughtBy(), course.getLessons())).collect(Collectors.toList());
+        List<CourseDTO> responseCourses = courses.stream().map((course) -> new CourseDTO(course.getIdentifier(), course.getTitle(), course.getTaughtBy(), course.getLessons())).collect(Collectors.toList());
 
         return new ResponseEntity<>(responseCourses, HttpStatus.OK);
 
