@@ -1,6 +1,7 @@
 package dev.farhan.springneo4j.controllers;
 
 import dev.farhan.springneo4j.models.User;
+import dev.farhan.springneo4j.objects.UserDTO;
 import dev.farhan.springneo4j.requests.CreateUserRequest;
 import dev.farhan.springneo4j.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,11 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<User> signUp(@RequestBody CreateUserRequest request) {
+    public ResponseEntity<UserDTO> signUp(@RequestBody CreateUserRequest request) {
         User user = userService.createUser(request);
 
-        return new ResponseEntity<>(user, HttpStatus.CREATED);
+        UserDTO responseUser = new UserDTO(user.getName(), user.getUsername(), user.getRoles());
+
+        return new ResponseEntity<>(responseUser, HttpStatus.CREATED);
     }
 }
