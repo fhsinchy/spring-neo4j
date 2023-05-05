@@ -28,14 +28,7 @@ public class CourseController {
         List<Course> courses = courseService.getAllCourses();
 
         List<CourseDTO> responseCourses = courses.stream().map(
-                (course) -> {
-                    CourseDTO responseCourse = new CourseDTO(course.getIdentifier(), course.getTitle(), course.getTaughtBy(), course.getLessons());
-
-                    if (principal != null)
-                        responseCourse.setEnrolled(courseEnrollmentService.getEnrollmentStatus(principal.getName(), course.getIdentifier()));
-
-                    return responseCourse;
-                }
+                (course) -> new CourseDTO(course.getIdentifier(), course.getTitle(), course.getTaughtBy(), course.getLessons())
         ).collect(Collectors.toList());
 
         return new ResponseEntity<>(responseCourses, HttpStatus.OK);
