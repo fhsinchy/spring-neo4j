@@ -14,38 +14,32 @@ public class Course {
     private Long id;
     private String identifier;
     private String title;
-    @Relationship(type = "TAUGHT_BY")
-    private User taughtBy;
-    @Relationship(type = "BELONGS_TO", direction = Relationship.Direction.INCOMING)
-    private Set<Lesson> lessons = new HashSet<>();
+    private String teacher;
 
     public Course() {
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public String getIdentifier() {
         return identifier;
     }
 
-    public String getTaughtBy() {
-        return taughtBy.getName();
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
     }
 
-    public Set<Lesson> getLessons() {
-        return lessons;
+    public String getTitle() {
+        return title;
     }
 
-    // public List<HashMap<String, String >> getLessons() {
-    //     return lessons.stream().map(lesson -> {
-    //         HashMap<String, String> l = new HashMap<>();
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    //         l.put("title", lesson.getTitle());
-    //         l.put("identifier", lesson.getIdentifier());
+    public String getTeacher() {
+        return teacher;
+    }
 
-    //         return l;
-    //     }).collect(Collectors.toList());
-    // }
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
+    }
 }

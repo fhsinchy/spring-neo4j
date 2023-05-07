@@ -11,28 +11,29 @@ CREATE
 (simon:User{name:"Simon Riley", username: "riley", password: "$2a$12$OKAuHjzrhMge/hB5FPKJTeygdFlQgOWLPA.BnI.3uTCQfA9nITGWC", roles: "ROLE_USER"}),
 
 
-(farhan:User{name: "Farhan Hasin Chowdhury", username: "farhan", password: "$2a$12$OKAuHjzrhMge/hB5FPKJTeygdFlQgOWLPA.BnI.3uTCQfA9nITGWC", roles: "ROLE_TEACHER"}),
-(gavin:User{name: "Gavin Lon", username: "gavin", password: "$2a$12$OKAuHjzrhMge/hB5FPKJTeygdFlQgOWLPA.BnI.3uTCQfA9nITGWC", roles: "ROLE_TEACHER"}),
+(blazor:Course{title: "Blazor Shopping Cart Application", teacher: "Gavin Lon", identifier: "PL4LFuHwItvKbdK-ogNsOx2X58hHGeQm8c"}),
+(blazor_lesson_1:Lesson{title: "Blazor (WebAssembly) and Web API on .NET 6 (C#) - Let’s Build a Shopping Cart Application - Part 1", identifier: "T9-FULwMIkU"})-[:BELONGS_TO]-> (blazor),
+(blazor_lesson_2:Lesson{title: "Blazor (WebAssembly) and Web API on .NET 6 (C#) - Let’s Build a Shopping Cart Application - Part 2", identifier: "T9-FULwMIkU"})-[:BELONGS_TO]-> (blazor),
+(blazor_lesson_3:Lesson{title: "Blazor (WebAssembly) and Web API on .NET 6 (C#) - Let’s Build a Shopping Cart Application - Part 3", identifier: "T9-FULwMIkU"})-[:BELONGS_TO]-> (blazor),
+(blazor_lesson_4:Lesson{title: "Blazor (WebAssembly) and Web API on .NET 6 (C#) - Let’s Build a Shopping Cart Application - Part 4", identifier: "T9-FULwMIkU"})-[:BELONGS_TO]-> (blazor),
 
+(asp:Course{title: "ASP .NET Core MVC Web Application (.NET 5)", teacher: "Gavin Lon", identifier: "PL4LFuHwItvKZ6Mz5W5wzD9uo3w6tNChhX"}),
+(asp_lesson_1:Lesson{title: "Part 1 - Overview - Let's Build an ASP.NET Core MVC Web Application on .NET 5", identifier: "T9-FULwMIkU"})-[:BELONGS_TO]-> (asp),
+(asp_lesson_2:Lesson{title: "Part 2 - Getting Started - Let's Build an ASP.NET Core MVC Web Application on .NET 5", identifier: "T9-FULwMIkU"})-[:BELONGS_TO]-> (asp),
+(asp_lesson_3:Lesson{title: "Part 3 - Database Design - Let's Build an Asp.NET Core MVC Web Application on .NET 5", identifier: "T9-FULwMIkU"})-[:BELONGS_TO]-> (asp),
+(asp_lesson_4:Lesson{title: "Part 4 - Project Infrastructure & Identity-Let's Build an Asp.NET Core MVC Web Application on .NET 5", identifier: "T9-FULwMIkU"})-[:BELONGS_TO]-> (asp),
 
-(blazor:Course{title: "Blazor Shopping Cart Application", identifier: "PL4LFuHwItvKbdK-ogNsOx2X58hHGeQm8c"}),
-(asp:Course{title: "ASP .NET Core MVC Web Application (.NET 5)", identifier: "PL4LFuHwItvKZ6Mz5W5wzD9uo3w6tNChhX"}),
-(csharp:Course{title: "Advanced C#", identifier: "PL4LFuHwItvKaOi-bN1E2WUVyZbuRhVokL"}),
+(csharp:Course{title: "Advanced C#", teacher: "Gavin Lon", identifier: "PL4LFuHwItvKaOi-bN1E2WUVyZbuRhVokL"}),
+(csharp_lesson_1:Lesson{title: "Introduction - Advanced C# Tutorial (Part 1)", identifier: "T9-FULwMIkU"})-[:BELONGS_TO]-> (csharp),
+(csharp_lesson_2:Lesson{title: ".NET 5 (.NET Framework, Mono and .NET Core) - Advanced C# Tutorial (Part 2)", identifier: "T9-FULwMIkU"})-[:BELONGS_TO]-> (csharp),
+(csharp_lesson_3:Lesson{title: "C# Delegates (Part 1 - Introduction) - Advanced C# Tutorial (Part 3.1)", identifier: "T9-FULwMIkU"})-[:BELONGS_TO]-> (csharp),
+(csharp_lesson_4:Lesson{title: "C# Delegates (Part 2 - Practical Code Example) - Advanced C# Tutorial (Part 3.2)", identifier: "T9-FULwMIkU"})-[:BELONGS_TO]-> (csharp),
 
-
-(unity:Course{title: "Unity for Beginners (C#) 2023", identifier: "PL4LFuHwItvKYl6zPFGm9I9ejmR3uX8izX"}),
-(unityl1:Lesson{title: "Unity for Beginners (C#) - 2023 - Let's Create a Game - Introduction", identifier: "KTk-UFBnQpM"})-[:BELONGS_TO]-> (unity),
-(unityl2:Lesson{title: "Unity for Beginners (C#) - 2023 - Let's Create a Game - Part 2 - Getting Started", identifier: "ocgsl2A5rsg"})-[:BELONGS_TO]-> (unity),
-(unityl3:Lesson{title: "Unity for Beginners (C#) - 2023 - Let's Create a Game - Part 3 - Control Player Movement (C# Script)", identifier: "O3tXeChXXJA"})-[:BELONGS_TO]-> (unity),
-(unityl4:Lesson{title: "Unity for Beginners (C#) - 2023 - Game - Part 4 - Camera Follow Player, and Player Jump", identifier: "1z8nRzfdEg"})-[:BELONGS_TO]-> (unity),
-(unityl5:Lesson{title: "Unity for Beginners (C#) - 2023 - Game - Part 5 - Prefabs, Materials and Player Health", identifier: "540bv5zEyOo"})-[:BELONGS_TO]-> (unity),
-(unityl6:Lesson{title: "Unity for Beginners (C#) - 2023 - Game - Part 6 - UI Display - Stopwatch", identifier: "M0DCuTzE3dg"})-[:BELONGS_TO]-> (unity),
-
-
-(blazor)-[:TAUGHT_BY]-> (gavin),
-(asp)-[:TAUGHT_BY]-> (gavin),
-(unity)-[:TAUGHT_BY]-> (gavin),
-(csharp)-[:TAUGHT_BY]-> (gavin),
+(unity:Course{title: "Unity for Beginners (C#) 2023", teacher: "Gavin Lon", identifier: "PL4LFuHwItvKYl6zPFGm9I9ejmR3uX8izX"}),
+(unity_lesson_1:Lesson{title: "Unity for Beginners (C#) - 2023 - Let's Create a Game - Introduction", identifier: "KTk-UFBnQpM"})-[:BELONGS_TO]-> (unity),
+(unity_lesson_2:Lesson{title: "Unity for Beginners (C#) - 2023 - Let's Create a Game - Part 2 - Getting Started", identifier: "ocgsl2A5rsg"})-[:BELONGS_TO]-> (unity),
+(unity_lesson_3:Lesson{title: "Unity for Beginners (C#) - 2023 - Let's Create a Game - Part 3 - Control Player Movement (C# Script)", identifier: "O3tXeChXXJA"})-[:BELONGS_TO]-> (unity),
+(unity_lesson_4:Lesson{title: "Unity for Beginners (C#) - 2023 - Game - Part 4 - Camera Follow Player, and Player Jump", identifier: "1z8nRzfdEg"})-[:BELONGS_TO]-> (unity),
 
 
 (john)-[:ENROLLED_IN]-> (blazor),
@@ -45,4 +46,5 @@ CREATE
 
 (mikail)-[:ENROLLED_IN]-> (unity),
 (mcmillan)-[:ENROLLED_IN]-> (unity),
+
 (simon)-[:ENROLLED_IN]-> (csharp);

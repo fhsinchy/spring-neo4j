@@ -8,10 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Node
 public class User implements UserDetails {
@@ -20,8 +17,6 @@ public class User implements UserDetails {
     private String name;
     private String username;
     private String password;
-    @Relationship(type = "ENROLLED_IN")
-    private Set<Course> enrollments = new HashSet<>();
     private String roles;
 
     public User() {
@@ -43,14 +38,6 @@ public class User implements UserDetails {
     @Override
     public String getPassword() {
         return password;
-    }
-
-    public Set<Course> getEnrollments() {
-        return enrollments;
-    }
-
-    public void setEnrollments(Course course) {
-        this.enrollments.add(course);
     }
 
     public String getRoles() {
