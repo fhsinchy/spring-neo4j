@@ -1,9 +1,11 @@
 package dev.farhan.springneo4j.controllers;
 
 import java.security.Principal;
-import java.util.Set;
+import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import dev.farhan.springneo4j.objects.CourseEnrolmentDTO;
+import dev.farhan.springneo4j.queryresults.CourseEnrolmentQueryResult;
+import dev.farhan.springneo4j.services.CourseEnrolmentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,24 +16,31 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dev.farhan.springneo4j.models.Course;
 import dev.farhan.springneo4j.requests.CourseEnrollmentRequest;
-import dev.farhan.springneo4j.services.UserService;
 
 @RestController
 @RequestMapping("/api/v1/enrollments")
 public class CourseEnrollmentController {
+    private final CourseEnrolmentService courseEnrolmentService;
 
-    @Autowired
-    private UserService userService;
+    public CourseEnrollmentController(CourseEnrolmentService courseEnrolmentService) {
+        this.courseEnrolmentService = courseEnrolmentService;
+    }
 
     @GetMapping("/")
-    public ResponseEntity<Set<Course>> enrollments(Principal principal) {
-        return new ResponseEntity<>(userService.getUserByUserName(principal.getName()).getEnrollments(), HttpStatus.OK);
+    public ResponseEntity<List<Course>> enrollments(Principal principal) {
+        return new ResponseEntity<>(courseEnrolmentService.getAllEnrolledCoursesByUsername(principal.getName()), HttpStatus.OK);
     }
 
     @PostMapping("/")
-    public ResponseEntity<Course> enrollIn(@RequestBody CourseEnrollmentRequest request, Principal principal) {
-        Course course = userService.enrollIn(request.getCourseIdentifier(), principal.getName());
+    public ResponseEntity<CourseEnrolmentDTO> enrollIn(@RequestBody CourseEnrollmentRequest request, Principal principal) {
+        CourseEnrolmentQueryResult enrolment = courseEnrolmentService.enrollIn(principal.getName(), request.getCourseIdentifier());
 
-        return new ResponseEntity<Course>(course, HttpStatus.OK);
+        CourseEnrolmentDTO responseEnrolment = new CourseEnrolmentDTO();
+
+        responseEnrolment.setName(enrolment.getUser().getName());
+        responseEnrolment.setUsername(enrolment.getUser().getUsername());
+        responseEnrolment.setCourse(enrolment.getCourse());
+
+        return new ResponseEntity<>(responseEnrolment, HttpStatus.OK);
     }
 }

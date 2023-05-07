@@ -1,24 +1,18 @@
 package dev.farhan.springneo4j.objects;
 
 import dev.farhan.springneo4j.models.Lesson;
-import java.util.Set;
-import java.util.HashSet;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CourseDTO {
     private String identifier;
     private String title;
-    private String taughtBy;
-    private Set<Lesson> lessons = new HashSet<>();
+    private String teacher;
+    private List<Lesson> lessons = new ArrayList<>();
     private boolean isEnrolled;
-    
-    public CourseDTO() {
-    }
 
-    public CourseDTO(String identifier, String title, String taughtBy, Set<Lesson> lessons) {
-        this.identifier = identifier;
-        this.title = title;
-        this.taughtBy = taughtBy;
-        this.lessons = lessons;
+    public CourseDTO() {
     }
 
     public String getIdentifier() {
@@ -37,19 +31,19 @@ public class CourseDTO {
         this.title = title;
     }
 
-    public String getTaughtBy() {
-        return taughtBy;
+    public String getTeacher() {
+        return teacher;
     }
 
-    public void setTaughtBy(String taughtBy) {
-        this.taughtBy = taughtBy;
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
     }
 
-    public Set<Lesson> getLessons() {
+    public List<Lesson> getLessons() {
         return lessons;
     }
 
-    public void setLessons(Set<Lesson> lessons) {
+    public void setLessons(List<Lesson> lessons) {
         this.lessons = lessons;
     }
 
@@ -57,10 +51,7 @@ public class CourseDTO {
         return isEnrolled;
     }
 
-    public void setEnrolled(boolean isEnrolled) {
-        this.isEnrolled = isEnrolled;
+    public void setEnrolled(boolean enrolled) {
+        isEnrolled = enrolled;
     }
-
-    
-        
 }
