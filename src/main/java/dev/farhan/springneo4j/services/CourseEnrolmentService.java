@@ -22,7 +22,7 @@ public class CourseEnrolmentService {
         return courseRepository.findAllEnrolledCoursesByUsername(username);
     }
 
-    public boolean getEnrollmentStatus(String username, String courseIdentifier) {
+    public boolean getEnrolmentStatus(String username, String courseIdentifier) {
         return userRepository.findEnrolmentStatus(username, courseIdentifier);
     }
 

@@ -40,7 +40,7 @@ public class CourseController {
                     responseCourse.setLessons(lessonService.getAllLessonsByCourseIdentifier(course.getIdentifier()));
 
                     if (principal != null)
-                        responseCourse.setEnrolled(courseEnrolmentService.getEnrollmentStatus(principal.getName(),
+                        responseCourse.setEnrolled(courseEnrolmentService.getEnrolmentStatus(principal.getName(),
                                 course.getIdentifier()));
 
                     return responseCourse;
@@ -61,7 +61,7 @@ public class CourseController {
         responseCourse.setLessons(lessonService.getAllLessonsByCourseIdentifier(identifier));
 
         if (principal != null)
-            responseCourse.setEnrolled(courseEnrolmentService.getEnrollmentStatus(principal.getName(), identifier));
+            responseCourse.setEnrolled(courseEnrolmentService.getEnrolmentStatus(principal.getName(), identifier));
 
         return new ResponseEntity<>(responseCourse, HttpStatus.OK);
     }

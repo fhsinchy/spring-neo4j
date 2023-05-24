@@ -22,8 +22,12 @@ import dev.farhan.springneo4j.services.NeoUserDetailsService;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-    @Autowired
-    private NeoUserDetailsService neoUserDetailsService;
+    private final NeoUserDetailsService neoUserDetailsService;
+
+    public SecurityConfig(NeoUserDetailsService neoUserDetailsService) {
+        this.neoUserDetailsService = neoUserDetailsService;
+    }
+
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity

@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.farhan.springneo4j.models.Course;
-import dev.farhan.springneo4j.requests.CourseEnrollmentRequest;
+import dev.farhan.springneo4j.requests.CourseEnrolmentRequest;
 
 @RestController
 @RequestMapping("/api/v1/enrollments")
-public class CourseEnrollmentController {
+public class CourseEnrolmentController {
     private final CourseEnrolmentService courseEnrolmentService;
     private final LessonService lessonService;
 
-    public CourseEnrollmentController(CourseEnrolmentService courseEnrolmentService, LessonService lessonService) {
+    public CourseEnrolmentController(CourseEnrolmentService courseEnrolmentService, LessonService lessonService) {
         this.courseEnrolmentService = courseEnrolmentService;
         this.lessonService = lessonService;
     }
@@ -53,7 +53,7 @@ public class CourseEnrollmentController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<CourseEnrolmentDTO> enrollIn(@RequestBody CourseEnrollmentRequest request, Principal principal) {
+    public ResponseEntity<CourseEnrolmentDTO> enrollIn(@RequestBody CourseEnrolmentRequest request, Principal principal) {
         CourseEnrolmentQueryResult enrolment = courseEnrolmentService.enrollIn(principal.getName(), request.getCourseIdentifier());
 
         CourseEnrolmentDTO responseEnrolment = new CourseEnrolmentDTO();

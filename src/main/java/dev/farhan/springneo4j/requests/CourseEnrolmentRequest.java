@@ -1,9 +1,9 @@
 package dev.farhan.springneo4j.requests;
 
-public class CourseEnrollmentRequest {
+public class CourseEnrolmentRequest {
     private String courseIdentifier;
 
-    public CourseEnrollmentRequest() {
+    public CourseEnrolmentRequest() {
     }
 
     public String getCourseIdentifier() {
