@@ -27,6 +27,7 @@ public class CourseEnrolmentService {
     }
 
     public CourseEnrolmentQueryResult enrollIn(String username, String courseIdentifier) {
+        // TODO: make sure that the user has not been enrolled in the course already.
         return userRepository.createEnrolmentRelationship(username, courseIdentifier);
     }
 }

@@ -22,6 +22,7 @@ public class UserService {
         User user = new User();
 
         user.setName(request.getName());
+        // TODO: make sure that this username doesn't exist.
         user.setUsername(request.getUsername());
         user.setRoles(request.getRoles());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
